@@ -5,6 +5,26 @@ local event = {}
 event.handler = {}
 
 
+--- Clear the list of subscriber for an event.
+-- @param event_name string, name of the event, or how you want to call it
+-- @return false if the handler for the event doesn't exist
+-- @return true sucess
+
+-- TODO : What I should do with the listener? Should they know?
+function event:clear(event_name)
+  assert(type(type_event) == "string","The event name must be a string "..type(event_name))
+  
+  if self.handler[event_name] == nil then
+    print("WARNING, there is not handler of the event",event_name,"to clear")
+    return false
+  end
+  
+  self.handler[event_name] = nil
+  return true
+end
+
+
+
 --- Create the new, event. Init the table for the correct handler
 -- @param event_name string, name of the event, or how you want to call it
 -- @return true
@@ -34,6 +54,14 @@ function event:publish(event_name, ...)
     -- I don't know if it's good idea. In this format your functions must be call with "self:"
     self.handler[event_name][i][event_name](self,...)
   end
+  return true
+end
+
+--- Remove an event
+-- @param event_name string, name of the event, or how you want to call it
+-- @return true
+function event:remove_event(event_name)
+  self.handler[event_name] = nil
   return true
 end
 
