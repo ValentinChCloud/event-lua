@@ -29,7 +29,7 @@ end
 -- @param event_name string, name of the event, or how you want to call it
 -- @return true
 function event:new_event(event_name)
-  assert(type(type_event) == "string","The event name must be a string "..type(event_name))
+  assert(type(event_name) == "string","The event name must be a string "..type(event_name))
   if self.handler[event_name] == nil then
     self.handler[event_name] = {}
     return true
@@ -45,8 +45,8 @@ end
 -- @return true
 function event:publish(event_name, ...)
   -- If the event list doesn't exists
-  if self.handler[type_event] == nil then
-    self:new_event(type_event)
+  if self.handler[event_name] == nil then
+    self:new_event(event_name)
     return true
   end
   
@@ -72,7 +72,7 @@ end
 -- @return true
 function event:subscribe(event_name, object )
   assert(type(object) == "table")
-  assert(object[event_name]," Your object must have a function called "..event_name
+  assert(object[event_name]," Your object must have a function called "..event_name)
   if self.handler[event_name] == nil then
     self:new_event(event_name)
   end
@@ -98,7 +98,7 @@ function event:unsubscribe(event_name, object)
       return true
     end
   end
-  print ("WARNING, you are trying to unsubscribe to a list, you'are not subcribed"
+  print ("WARNING, you are trying to unsubscribe to a list, you'are not subcribed")
   return false
 end 
 
