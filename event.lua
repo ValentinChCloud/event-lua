@@ -50,7 +50,7 @@ function event:publish(event_name, ...)
     return true
   end
   
-  for i=1, #self.handler[event_name] do
+  for i=1, #self.handler[event_name] do 
     -- I don't know if it's good idea. In this format your functions must be call with "self:"
     self.handler[event_name][i][event_name](self,...)
   end
@@ -87,7 +87,7 @@ end
 -- @return true 
 function event:unsubscribe(event_name, object)
   if self.handler[event_name] == nil then
-    print("WARNING, unscribe an event, that doesn't exist")
+    print("WARNING, unsubscribe an event, that doesn't exist")
     return false
   end
 
@@ -98,7 +98,7 @@ function event:unsubscribe(event_name, object)
       return true
     end
   end
-  print ("WARNING, you are trying to unsubscribe to a list, you'are not subcribed")
+  print ("WARNING, you are trying to unsubscribe to a list, to which you'are not subcribed")
   return false
 end 
 
