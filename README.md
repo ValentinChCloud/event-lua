@@ -6,6 +6,7 @@ Litle lib, to handle event in lua.
 
 # HOW TO USE
 
+```kua
 event = require("event")
 
 -- Declare an event. This is not mandatory, because when an object whil subscribe to an event channel
@@ -35,5 +36,6 @@ event:publish("test_event",a,b,c)
 -- Result
 -- This is a test
 -- 4	 I like potatoes	 But I preferer, chocolate
+```
 
 
