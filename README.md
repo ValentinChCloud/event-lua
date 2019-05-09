@@ -15,7 +15,7 @@ event:new_event("test_event")
 
 
 
--- Declare what ever you want. Your object must be a function with the same name of the event
+-- Declare what ever you want. Your object must has function with the same name of the event
 
 matriache = {}
   function matriache:test_event(a, b, c)
